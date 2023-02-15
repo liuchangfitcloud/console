@@ -31,6 +31,8 @@ import {
   V1alpha1SettingApi,
   V1alpha1UserApi,
   V1alpha1AnnotationSettingApi,
+  V1alpha1AuthSettingApi,
+  ApiHaloRunV1alpha1AuthSettingApi,
 } from "@halo-dev/api-client";
 import type { AxiosError, AxiosInstance } from "axios";
 import axios from "axios";
@@ -162,6 +164,7 @@ function setupApiClient(axios: AxiosInstance) {
         baseURL,
         axios
       ),
+      authSetting: new V1alpha1AuthSettingApi(undefined, baseURL, axios),
     },
     // custom endpoints
     user: new ApiConsoleHaloRunV1alpha1UserApi(undefined, baseURL, axios),
@@ -177,6 +180,11 @@ function setupApiClient(axios: AxiosInstance) {
     reply: new ApiConsoleHaloRunV1alpha1ReplyApi(undefined, baseURL, axios),
     stats: new ApiConsoleHaloRunV1alpha1StatsApi(undefined, baseURL, axios),
     attachment: new ApiConsoleHaloRunV1alpha1AttachmentApi(
+      undefined,
+      baseURL,
+      axios
+    ),
+    authSetting: new ApiHaloRunV1alpha1AuthSettingApi(
       undefined,
       baseURL,
       axios
